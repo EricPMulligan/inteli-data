@@ -47,6 +47,5 @@ test:
 #
 production:
   <<: *default
-  database: inteli-data_production
-  username: inteli-data
-  password: <%= ENV['INTELI-DATA_DATABASE_PASSWORD'] %>
+  database: inteli-data
+  password: <%= ENV['DATABASE_URL'] %>
