@@ -186,11 +186,13 @@ module InteliData
     end
 
     def populate_references(data_entry, entry)
-      entry['reference'].each do |reference_entry|
-        reference = Reference.new
-        reference.reference = reference_entry
-        reference.data_entry = data_entry
-        reference.save!
+      if entry.key? 'reference'
+        entry['reference'].each do |reference_entry|
+          reference = Reference.new
+          reference.reference = reference_entry
+          reference.data_entry = data_entry
+          reference.save!
+        end
       end
     end
 
