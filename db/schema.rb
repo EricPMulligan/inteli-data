@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429201447) do
+ActiveRecord::Schema.define(version: 20170429205240) do
 
   create_table "bureau_codes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "code", null: false
@@ -116,6 +116,12 @@ ActiveRecord::Schema.define(version: 20170429201447) do
     t.index ["parent_id"], name: "index_publishers_on_parent_id", using: :btree
   end
 
+  create_table "references", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "data_entry_id", null: false
+    t.string "reference",     null: false
+    t.index ["data_entry_id"], name: "index_references_on_data_entry_id", using: :btree
+  end
+
   create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.index ["name"], name: "index_themes_on_name", unique: true, using: :btree
@@ -135,4 +141,5 @@ ActiveRecord::Schema.define(version: 20170429201447) do
   add_foreign_key "data_entries_themes", "themes"
   add_foreign_key "distributions", "data_entries", primary_key: "oid"
   add_foreign_key "publishers", "publishers", column: "parent_id"
+  add_foreign_key "references", "data_entries", primary_key: "oid"
 end

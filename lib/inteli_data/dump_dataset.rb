@@ -8,6 +8,7 @@ module InteliData
           hash['dataset'].each do |entry|
             data_entry = build_data_entry entry
             data_entry.save!
+            populate_references data_entry, entry
           end
         rescue ActiveRecord::RecordInvalid => e
           puts e.message
@@ -182,6 +183,15 @@ module InteliData
       publisher = Publisher.find_by name: entry['publisher']['name']
       publisher = build_publisher entry['publisher'] unless publisher
       data_entry.publisher = publisher
+    end
+
+    def populate_references(data_entry, entry)
+      entry['reference'].each do |reference_entry|
+        reference = Reference.new
+        reference.reference = reference_entry
+        reference.data_entry = data_entry
+        reference.save!
+      end
     end
 
     def populate_themes(data_entry, entry)
