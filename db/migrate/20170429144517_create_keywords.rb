@@ -4,11 +4,11 @@ class CreateKeywords < ActiveRecord::Migration[5.0]
       t.string :keyword, null: false
     end
 
-    create_join_table :datasets, :keywords do |t|
-      t.string :dataset_id, null: false, index: true
+    create_join_table :data_entries, :keywords do |t|
+      t.string :data_entry_id, null: false, index: true
       t.references :keyword, null: false, index: true, foreign_key: true
     end
 
-    add_foreign_key :datasets_keywords, :datasets, column: :dataset_id, primary_key: :oid
+    add_foreign_key :data_entries_keywords, :data_entries, column: :data_entry_id, primary_key: :oid
   end
 end

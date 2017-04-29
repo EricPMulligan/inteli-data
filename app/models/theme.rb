@@ -1,3 +1,3 @@
 class Theme < ApplicationRecord
-  has_and_belongs_to_many :datasets
+  has_and_belongs_to_many :data_entries
 end

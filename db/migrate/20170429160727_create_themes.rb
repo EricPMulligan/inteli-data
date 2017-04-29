@@ -4,11 +4,11 @@ class CreateThemes < ActiveRecord::Migration[5.0]
       t.string :name, null: false, index: { unique: true }
     end
 
-    create_join_table :datasets, :themes, table_name: :datasets_themes do |t|
-      t.string :dataset_id, null: false, index: true
-      t.references :themes, null: false, index: true, foreign_key: true
+    create_join_table :data_entries, :themes, table_name: :data_entries_themes do |t|
+      t.string :data_entry_id, null: false, index: true
+      t.references :theme, null: false, index: true, foreign_key: true
     end
 
-    add_foreign_key :datasets_themes, :datasets, column: :dataset_id, primary_key: :oid
+    add_foreign_key :data_entries_themes, :data_entries, column: :data_entry_id, primary_key: :oid
   end
 end

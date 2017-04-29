@@ -1,3 +1,3 @@
 class ContactPoint < ApplicationRecord
-  belongs_to :dataset
+  has_one :data_entry
 end

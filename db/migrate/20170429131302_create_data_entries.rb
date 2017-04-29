@@ -1,6 +1,6 @@
-class CreateDatasets < ActiveRecord::Migration[5.0]
+class CreateDataEntries < ActiveRecord::Migration[5.0]
   def change
-    create_table :datasets, id: false, primary_key: :oid do |t|
+    create_table :data_entries, id: false, primary_key: :oid do |t|
       t.string :oid, null: false, index: { unique: true }, primary: true
       t.string :type, null: false
       t.string :access_level, null: false
@@ -19,6 +19,6 @@ class CreateDatasets < ActiveRecord::Migration[5.0]
       t.string :is_part_of
     end
 
-    add_index :datasets, :spatial, type: :spatial
+    add_index :data_entries, :spatial, type: :spatial
   end
 end

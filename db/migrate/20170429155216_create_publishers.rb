@@ -6,12 +6,12 @@ class CreatePublishers < ActiveRecord::Migration[5.0]
       t.string :name, null: false
     end
 
-    create_join_table :datasets, :publishers, table_name: :datasets_publishers do |t|
-      t.string :dataset_id, null: false, index: true
+    create_join_table :data_entries, :publishers, table_name: :data_entries_publishers do |t|
+      t.string :data_entry_id, null: false, index: true
       t.references :publisher, null: false, index: true, foreign_key: true
     end
 
-    add_foreign_key :datasets_publishers, :datasets, column: :dataset_id, primary_key: :oid
+    add_foreign_key :data_entries_publishers, :data_entries, column: :data_entry_id, primary_key: :oid
     add_foreign_key :publishers, :publishers, column: :parent_id
   end
 end

@@ -4,11 +4,11 @@ class CreateLanguages < ActiveRecord::Migration[5.0]
       t.string :language, null: false, index: { unique: true }
     end
 
-    create_join_table :datasets, :languages, table_name: :datasets_languages do |t|
-      t.string :dataset_id, null: false, index: true
+    create_join_table :data_entries, :languages, table_name: :data_entries_languages do |t|
+      t.string :data_entry_id, null: false, index: true
       t.references :language, null: false, index: true, foreign_key: true
     end
 
-    add_foreign_key :datasets_languages, :datasets, column: :dataset_id, primary_key: :oid
+    add_foreign_key :data_entries_languages, :data_entries, column: :data_entry_id, primary_key: :oid
   end
 end

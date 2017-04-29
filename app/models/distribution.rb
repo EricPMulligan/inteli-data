@@ -1,3 +1,3 @@
 class Distribution < ApplicationRecord
-  belongs_to :dataset
+  belongs_to :data_entry
 end

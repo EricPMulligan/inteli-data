@@ -4,11 +4,11 @@ class CreateProgramCodes < ActiveRecord::Migration[5.0]
       t.string :program_code, null: false, index: { unique: true }
     end
 
-    create_join_table :datasets, :program_codes, table_name: :datasets_program_codes do |t|
-      t.string :dataset_id, null: false, index: true
+    create_join_table :data_entries, :program_codes, table_name: :data_entries_program_codes do |t|
+      t.string :data_entry_id, null: false, index: true
       t.references :program_code, null: false, index: true, foreign_key: true
     end
 
-    add_foreign_key :datasets_program_codes, :datasets, column: :dataset_id, primary_key: :oid
+    add_foreign_key :data_entries_program_codes, :data_entries, column: :data_entry_id, primary_key: :oid
   end
 end
