@@ -10,14 +10,15 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql2
+  adapter: mysql2rgeo
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: inteli-data-db-development
-  host: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['INTELI_DATA_DB_USER'] %>
+  password: <%= ENV['INTELI_DATA_DB_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,7 +26,8 @@ development:
 test:
   <<: *default
   database: inteli-data-db-test
-  host: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['INTELI_DATA_DB_USER'] %>
+  password: <%= ENV['INTELI_DATA_DB_PASSWORD'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

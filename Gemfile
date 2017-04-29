@@ -7,9 +7,11 @@ end
 
 ruby '2.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '5.0.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'activerecord-mysql2rgeo-adapter'
+gem 'ffi-geos'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
